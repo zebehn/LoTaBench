@@ -184,10 +184,33 @@ class TaskPlanner:
         {{~/assistant}}
         """)
 
+        self.guidance_program = guidance("""
+        You are a robot operating in a home. 
+        A human user can ask you to do various tasks and you are supposed to tell the sequence of actions you would do to accomplish your task.
+        
+        Examples of human instructions and possible your (robot) answers:
+        {{example_text}}
+        
+        Now please answer the sequence of actions for the input instruction.
+        You should use one of actions of this list:
+        {{skills_text}}.
+    
+        List the actions with comma seperator.
+        
+        Human: {{query}}        
+        Robot: {{gen 'answer' do_sample=False max_tokens=500}}
+        """)
+
+        #print("Skills Text ##################: \n", skills_text, "###############\n\n")
+
+        #print("Example Text ##################: \n", example_text, "###############\n\n")
+
         # run
         out = self.guidance_program(example_text=example_text, skills_text=skills_text, query=query)
         answer = out['answer']
-        print(answer)
+        print("LLM Orig Answer:#####", answer, "########")
+        answer = answer.split('\n')[0]
+        print("LLM Newr Answer:#####", answer, "########")
 
         # to list
         answer = answer.replace('Robot: ', '')

@@ -174,7 +174,13 @@ class AlfredEvaluator(Evaluator):
         else:
             step_by_step_mode = True
 
+        if self.cfg.planner.planning_mode == 'step_by_step':
+            step_by_step_mode = True
+        elif self.cfg.planner.planning_mode == 'whole_sequence':
+            step_by_step_mode = False
+
         if step_by_step_mode:
+            log.info("#####################Step-by-step mode")
             prev_steps = []
             prev_action_msg = []
             while not done:
@@ -220,7 +226,7 @@ class AlfredEvaluator(Evaluator):
                 t += 1
 
         else:
-
+            log.info("#####################Whole_Sequence mode")
             steps, prompt = planner.plan_whole(instruction_text)
             prev_steps = steps
 
