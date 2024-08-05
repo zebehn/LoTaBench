@@ -1,4 +1,4 @@
-model_name: "EleutherAI/gpt-neo-1.3B"
+model_name: "gpt-4"
 use_accelerate_device_map: True
 load_in_8bit: False
 device: 'cuda'
@@ -10,4 +10,4 @@ scoring_mode: 'guidance'  # naive, reuse_prompt, guidance
 use_predefined_prompt: False  # NOTE: This uses a pre-defined prompt, and you can put a failure message in the prompt.
 hf_auth_token: ''  # NOTE: this is required for downloading the private model from HuggingFace
 openai_api_key: ''  # NOTE: this is required for using the OpenAI API
-planning_mode: 'step_by_step'  # step_by_step, whole_sequence
+planning_mode: 'whole_sequence'  # step_by_step, whole_sequence

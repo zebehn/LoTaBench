@@ -184,7 +184,7 @@ class TaskPlanner:
         {{~/assistant}}
         """)
 
-        self.guidance_program = guidance("""
+        self.guidance_program_1 = guidance("""
         You are a robot operating in a home. 
         A human user can ask you to do various tasks and you are supposed to tell the sequence of actions you would do to accomplish your task.
         
