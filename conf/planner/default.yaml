@@ -1,4 +1,4 @@
-model_name: "gpt-4"
+model_name: "OpenAI/gpt-4"
 use_accelerate_device_map: True
 load_in_8bit: False
 device: 'cuda'
